@@ -1,0 +1,27 @@
+# Compiled object files
+*.o
+
+# Shared libraries (compiled C extensions)
+*.so
+
+# Python cache files
+__pycache__/
+
+# Setuptools distribution folder
+*.egg-info/
+dist/
+
+# PyBuilder
+build/
+
+# Jupyter Notebook files
+*.ipynb
+
+venv/
+
+# Lightning outputs
+*logs*
+outputs/
+
+# Dataset
+MNIST/

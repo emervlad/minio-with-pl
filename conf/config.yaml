@@ -1,0 +1,19 @@
+s3:
+    profile: dev
+    endpoint: http://127.0.0.1:9000
+    bucket: vlabuck
+
+mnist:
+    path: .
+    test_size: 0.1
+    seed: 42
+
+fcn:
+    hidden_size: 64
+
+training:
+    batch_size: 64
+    epochs: 5
+    learning_rate: 2e-5
+    use_ckpt: False
+    ckpt_path: /lightning_logs/version_0/checkpoints/epoch=0-step=860.ckpt
