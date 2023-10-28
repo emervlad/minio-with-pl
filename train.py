@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
+import boto3
 import hydra
 from omegaconf import DictConfig
-
-import boto3
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torch.utils.data import DataLoader, random_split
@@ -11,6 +10,7 @@ from torchvision import transforms
 from torchvision.datasets import MNIST
 
 from MNISTModel import *
+
 
 @hydra.main(config_path="conf", config_name="config", version_base="1.3")
 def main(cfg: DictConfig) -> None:
