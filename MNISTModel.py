@@ -25,7 +25,7 @@ class LitMNIST(L.LightningModule):
         self.num_classes = 10
         self.dims = (1, 28, 28)
         channels, width, height = self.dims
-        
+
         # Define PyTorch model
         self.model = nn.Sequential(
             nn.Flatten(),
@@ -81,7 +81,7 @@ class LitMNIST(L.LightningModule):
         # download
         MNIST(self.data_dir, train=True, download=True)
         MNIST(self.data_dir, train=False, download=True)
-    
+
 
 class CustomCheckpointIO(TorchCheckpointIO):
     def __init__(self, bucket, s3_client):
@@ -94,17 +94,17 @@ class CustomCheckpointIO(TorchCheckpointIO):
         buffer = io.BytesIO()
         torch.save(checkpoint, buffer)
 
-        self.client.put_object(Body=buffer.getvalue(),
-                        Bucket=self.bucket,
-                        Key=path[self.cwdl:])
+        self.client.put_object(
+            Body=buffer.getvalue(), Bucket=self.bucket, Key=path[self.cwdl :]
+        )
 
     def load_checkpoint(self, path, storage_options=None):
         object = self.client.get_object(Bucket=self.bucket, Key=path)
 
-        loaded_buffer = io.BytesIO(object['Body'].read())
-        
+        loaded_buffer = io.BytesIO(object["Body"].read())
+
         return torch.load(loaded_buffer)
 
     def remove_checkpoint(self, path):
-        #self.client.delete_object(Bucket=self.bucket, Key=path[self.cwdl:])
+        # self.client.delete_object(Bucket=self.bucket, Key=path[self.cwdl:])
         pass
